@@ -1,3 +1,175 @@
-h1 {
-  color: yellow;
+$primary: #ff2e63;
+header {
+  display: flex;
+  padding: 1rem 75px;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row wrap;
+  gap: 1rem;
+  grid-gap: 1rem;
+  background-color: #fff;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.18);
+  .title {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff2e63;
+    text-align: center;
+    letter-spacing: 2.5px;
+    text-shadow: 2px 3px 1px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    img {
+      display: block;
+    }
+  }
+  .searchSubject {
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 1rem;
+    grid-gap: 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.18);
+    input {
+      outline: none;
+      border: none;
+      transition: all 250ms ease-in-out;
+      background-color: transparent;
+      &:hover,
+      &:active {
+        padding-right: 25px;
+      }
+      &::placeholder {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: "Hubballi", sans-serif;
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
+  }
+  @media screen and (max-width: 35.5em) {
+    flex-flow: column wrap;
+    .searchSubject {
+      width: 100%;
+    }
+  }
+}
+section.main {
+  padding: 1rem 75px;
+  .sidedBox {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 25px;
+    .trends {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      grid-gap: 1rem;
+      background-color: hsla(0, 0%, 100%, 0.5);
+      padding: 1rem;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+      place-self: flex-start;
+      width: 100%;
+      h2 {
+        font-family: "Roboto Condensed", sans-serif;
+        color: #555;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+        margin: 5px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+        position: relative;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: calc(1rem / -2);
+          left: 50%;
+          translate: -50% 0;
+          width: 50px;
+          height: 2px;
+          background-color: #ff2e63;
+        }
+        &::after {
+          bottom: -1rem;
+          width: 25px;
+        }
+      }
+      ul.subjectsContainer {
+        counter-reset: index;
+        padding: 0;
+        max-width: 300px;
+        li {
+          counter-increment: index;
+          display: flex;
+          align-items: center;
+          padding: 12px 0;
+          box-sizing: border-box;
+          cursor: pointer;
+          &::before {
+            content: counters(index, ".", decimal-leading-zero);
+            font-size: 1.5rem;
+            text-align: right;
+            font-weight: bold;
+            min-width: 50px;
+            padding-right: 12px;
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+            align-self: flex-start;
+            background-image: linear-gradient(
+              to bottom,
+              rgb(104, 0, 223),
+              rgb(11, 241, 42)
+            );
+            background-attachment: fixed;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+          & + & {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+          }
+        }
+      }
+    }
+    .books {
+      display: flex;
+      background-color: rgba(255, 255, 255, 0.75);
+      flex-direction: column;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+    .sidedBox {
+      grid-template-columns: 1fr;
+      .trends {
+        order: 2;
+      }
+      .books {
+        order: 1;
+      }
+    }
+  }
+}
+footer {
+  padding: 1rem;
+  text-align: center;
+  line-height: 1.5;
+  a {
+    color: #ff2e63;
+  }
 }

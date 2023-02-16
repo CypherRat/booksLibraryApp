@@ -1,0 +1,55 @@
+<div class="subjectBooks">
+  <div class="head">
+    <fa-icon [icon]="faArrowLeft" routerLink="/"></fa-icon>
+    <span>
+      Top
+      {{ subjectsArray?.works?.length }}
+      book{{ subjectsArray?.works?.length > 1 ? "s" : "" }}
+      on
+      <q>
+        <strong>{{ subjectName }}</strong>
+      </q>
+    </span>
+    <fa-icon [icon]="faBook" class="circleIcon"></fa-icon>
+  </div>
+  <div class="waitLoader" *ngIf="isLoading; else checkLength">
+    <span class="loader"></span>
+  </div>
+  <ng-template #checkLength>
+    <ng-container *ngIf="subjectsArray?.works?.length; else showNoData">
+      <table id="books" class="booksTable">
+        <thead>
+          <tr>
+            <th>Title and Sub Title</th>
+            <th>Author</th>
+            <th>First Publish Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subject of subjectsArray.works">
+            <td>
+              <a
+                href="https://openlibrary.org{{ subject.key }}"
+                target="_blank"
+                >{{ subject.title | titlecase }}</a
+              >
+              <fa-icon [icon]="faLink" class="icon"></fa-icon>
+            </td>
+            <td>
+              {{
+                subject.authors.length > 0 ? subject.authors[0].name : "Unknown"
+              }}
+            </td>
+            <td>{{ subject.first_publish_year }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </ng-template>
+  <ng-template #showNoData>
+    <div class="emptyData">
+      <img src="../../assets/images/empty.png" alt="Data Not Found" />
+      <b>Sorry, we found no books related to {{ subjectName }}</b>
+    </div>
+  </ng-template>
+</div>

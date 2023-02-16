@@ -1,0 +1,43 @@
+.subjectBooks {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  .head {
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    .circleIcon {
+      color: #ff2e63;
+      animation: bloomIcon 500ms infinite alternate;
+    }
+  }
+  .waitLoader,
+  .emptyData {
+    position: relative;
+    height: 250px;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .icon {
+    opacity: 0.5;
+    margin-left: 5px;
+  }
+}
+
+@keyframes bloomIcon {
+  to {
+    color: #fc94b4;
+  }
+}

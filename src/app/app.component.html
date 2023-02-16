@@ -1,1 +1,37 @@
-<h1>Hello</h1>
+<header>
+  <div class="title" routerLink="/">
+    <img src="assets/logo.svg" alt="Books Library App" width="40" />
+    <span>{{ title }}</span>
+  </div>
+  <div class="searchSubject">
+    <fa-icon [icon]="faSearch"></fa-icon>
+    <input
+      type="text"
+      placeholder="Search Subjects"
+      (keydown.enter)="gotosubject($event)"
+    />
+  </div>
+</header>
+<section class="main">
+  <div class="sidedBox">
+    <div class="trends">
+      <h2>Trending Subjects</h2>
+      <ul class="subjectsContainer">
+        <li
+          *ngFor="let subject of subjectsArray"
+          routerLink="/subject/{{ subject.name }}"
+        >
+          {{ subject.name }}
+        </li>
+      </ul>
+    </div>
+    <div class="books">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>
+<footer>
+  A simple web app to search books.
+  <wbr />
+  Powered by <a href="https://openlibrary.org/">Openlibrary</a>
+</footer>

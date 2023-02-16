@@ -1,0 +1,27 @@
+.waitLoader,
+.homeSpace,
+.noBooks {
+  position: relative;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+.icon {
+  opacity: 0.5;
+  margin-left: 5px;
+}
+table {
+  thead th {
+    &.desc {
+      transition: all 100ms ease;
+      .sortIcon {
+        color: #fc94b4;
+      }
+    }
+  }
+}

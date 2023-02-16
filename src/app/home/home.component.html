@@ -1,0 +1,14 @@
+<div class="searchBox">
+  <fa-icon [icon]="faSearch"></fa-icon>
+  <input
+    type="text"
+    placeholder="Search Book By Titles or By Author"
+    [(ngModel)]="inputData"
+    (ngModelChange)="searchStringChanged($event)"
+  />
+  <!-- (keydown.enter)="search($event)" -->
+</div>
+<app-book-details
+  [searchTerm]="searchTerm"
+  [isHome]="homeStatus"
+></app-book-details>

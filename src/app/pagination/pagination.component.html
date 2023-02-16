@@ -1,0 +1,20 @@
+<div class="pagination">
+  <div class="page-stats">
+    Showing page {{ currentPageNumber }} of {{ totalPage }}
+  </div>
+  <button
+    class="prev"
+    (click)="changePageNumber('prev')"
+    [disabled]="currentPageNumber == 1"
+  >
+    <fa-icon [icon]="faPrev"></fa-icon> Previous
+  </button>
+  <button
+    class="next"
+    (click)="changePageNumber('next')"
+    [disabled]="currentPageNumber >= totalPage"
+  >
+    Next
+    <fa-icon [icon]="faNext"></fa-icon>
+  </button>
+</div>

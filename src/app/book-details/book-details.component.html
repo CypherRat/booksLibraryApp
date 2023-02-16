@@ -1,0 +1,94 @@
+<div class="showDetails" *ngIf="isHome; else booksData">
+  <div class="homeSpace">
+    <img src="../../assets/images/bookLoader.svg" width="160" alt="Home" />
+    <b>Come on, search something...</b>
+  </div>
+</div>
+<ng-template #booksData>
+  <ng-container *ngIf="!isLoading; else showLoader">
+    <ng-container *ngIf="booksArray?.docs?.length; else showNoData">
+      <table id="books" class="booksTable">
+        <thead>
+          <tr>
+            <th
+              (click)="booksArray.docs.sort(dynamicSort('title'))"
+              [ngClass]="sortOrderIsAccending ? 'asc' : 'desc'"
+            >
+              <span>Title and Sub Title</span>&nbsp;
+              <fa-icon [icon]="faSortAsc" class="sortIcon"></fa-icon>
+            </th>
+            <th>Author</th>
+            <th>Latest Publish Year</th>
+            <th
+              (click)="booksArray.docs.sort(dynamicSort('first_publish_year'))"
+              [ngClass]="sortOrderIsAccending ? 'asc' : 'desc'"
+            >
+              <span>First Publish Year</span>&nbsp;
+              <fa-icon [icon]="faSortAsc" class="sortIcon"></fa-icon>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let books of booksArray.docs">
+            <td>
+              <a href="https://openlibrary.org{{ books.key }}" target="_blank">
+                {{ truncate(books.title, 50) | titlecase }}
+                {{
+                  books.subtitle?.length > 0 ? truncate(books.subtitle, 50) : ""
+                }}
+                <sup>
+                  <small>
+                    {{
+                      books.edition_key?.length > 0
+                        ? "(" + books.edition_key[0] + ")"
+                        : ""
+                    }}
+                  </small>
+                </sup>
+              </a>
+              <fa-icon [icon]="faLink" class="icon"></fa-icon>
+            </td>
+            <td>
+              {{
+                books.author_name?.length > 0 ? books.author_name[0] : "Unknown"
+              }}
+            </td>
+            <td>
+              {{
+                books.publish_year!
+                  ? findLatestYear(books.publish_year)
+                  : "Unknown"
+              }}
+            </td>
+            <td>
+              {{
+                books.first_publish_year! ? books.first_publish_year : "Unknown"
+              }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <app-pagination
+        [limitPerPage]="limit"
+        [totalPageNumber]="booksArray.numFound"
+        [currentPageNumber]="pageNumber"
+        (newPageNumber)="changePageNumber($event)"
+      ></app-pagination>
+    </ng-container>
+  </ng-container>
+</ng-template>
+<ng-template #showNoData>
+  <div class="noBooks">
+    <img
+      src="../../assets/images/notFound.svg"
+      alt="Book Not Found"
+      width="200"
+    />
+    <b>We found no books to show, try searching something else...</b>
+  </div>
+</ng-template>
+<ng-template #showLoader>
+  <div class="waitLoader">
+    <span class="loader"></span>
+  </div>
+</ng-template>

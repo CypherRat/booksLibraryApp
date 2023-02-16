@@ -1,4 +1,166 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&family=Hubballi&family=Roboto+Condensed:wght@700&display=swap");
+
+$dark: #060606;
+$accent: #dfd3d6;
+$light: #fc94b4;
+$primary: #ff2e63;
+
+// Media Queries for Screens
+$gl-ms: "screen and (max-width: 23.5em)"; // up to 360px
+$gl-xs: "screen and (max-width: 35.5em)"; // up to 568px
+$gl-sm: "screen and (max-width: 48em)"; // max 768px
+$gl-md: "screen and (max-width: 64em)"; // max 1024px
+$gl-lg: "screen and (max-width: 80em)"; // max 1280px
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-  background-color: blue;
+  background: $accent;
+  min-height: 100vh;
+  font-family: "Ubuntu", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: #f5f5f5;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  * {
+    position: relative;
+  }
+
+  td,
+  th {
+    padding-left: 16px;
+  }
+
+  thead tr {
+    height: 50px;
+    background: #ffed86;
+    font-size: 16px;
+  }
+
+  tbody tr {
+    height: 48px;
+    border-bottom: 1px solid #e3f1d5;
+    &:hover {
+      background: #999;
+    }
+    & > td:first-of-type {
+      max-width: 50%;
+    }
+    & > td:hover .icon {
+      opacity: 1;
+    }
+    &:last-child {
+      border: 0;
+    }
+  }
+
+  td,
+  th {
+    text-align: left;
+    &.l {
+      text-align: right;
+    }
+    &.c {
+      text-align: center;
+    }
+    &.r {
+      text-align: center;
+    }
+  }
+}
+
+@media #{$gl-xs} {
+  table {
+    display: block;
+    > *,
+    tr,
+    td,
+    th {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+    tbody tr {
+      height: auto;
+      padding: 8px 0;
+      & > td:first-of-type {
+        max-width: max-content;
+        padding-right: 8px;
+      }
+      td {
+        padding-left: 35%;
+        margin-bottom: 12px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        &:before {
+          position: absolute;
+          font-weight: 700;
+          width: 40%;
+          left: 10px;
+          top: 0;
+        }
+
+        &:nth-child(1):before {
+          content: "Title";
+        }
+        &:nth-child(2):before {
+          content: "Author";
+        }
+        &:nth-child(3):before {
+          content: "Latest";
+        }
+        &:nth-child(4):before {
+          content: "First";
+        }
+      }
+    }
+  }
+}
+
+.loader {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  border-radius: 50%;
+  box-shadow: -10px 8px 0 18px inset #fc94b4;
+  animation: rotate 2s ease-in infinite alternate;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    bottom: 16px;
+    background: $primary;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    animation: scale 1s ease-in infinite alternate;
+  }
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(750deg);
+  }
+}
+@keyframes scale {
+  100% {
+    transform: scale(0.5) translateY(5px);
+  }
 }
