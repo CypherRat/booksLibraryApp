@@ -21,6 +21,7 @@ export class AppComponent {
   ];
   gotosubject(event: any): void {
     if (event.keyCode !== 13) return;
+    alert(event.keyCode);
     let searchTerm: any = event.target.value;
     if (!searchTerm.length) return alert('Enter subject name to search!');
     this.router.navigate(['/subject/' + searchTerm]);
