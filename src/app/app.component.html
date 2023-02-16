@@ -8,8 +8,10 @@
     <input
       type="text"
       placeholder="Search Subjects"
-      (keydown)="gotosubject($event)"
+      [(ngModel)]="inputData"
+      (ngModelChange)="searchStringChanged($event)"
     />
+    <!-- (keydown)="gotosubject($event)" -->
   </div>
 </header>
 <section class="main">
