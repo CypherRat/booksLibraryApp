@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d935a0d8-84c4-41b5-9f1b-9ddf4899b4c4/deploy-status)](https://app.netlify.com/sites/bookslibraryapp/deploys)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
