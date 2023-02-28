@@ -28,11 +28,6 @@ Install the `npm` packages described in the `package.json` and verify that it wo
 ```shell
 npm install 
 ```
-or
-```shell
-npm install --legacy-peer-deps 
-```
-`*if you run into a peer dependency error*`
 
 ## Development server
 
