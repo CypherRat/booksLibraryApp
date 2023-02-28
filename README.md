@@ -1,8 +1,38 @@
-# BooksLibraryApp
+# Books Library App
+> A simple web app to search books powered by [OpenLibrary](https://openlibrary.org)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d935a0d8-84c4-41b5-9f1b-9ddf4899b4c4/deploy-status)](https://app.netlify.com/sites/bookslibraryapp/deploys)
+
+### Features and functionalities
++ Progressive Web App (PWA)
++ Pagination
++ Popular Subjects 
++ Search Subjects
++ Search Books
+
+## Get started
+
+### Clone the repo
+
+```shell
+git clone https://github.com/CypherRat/booksLibraryApp
+cd booksLibraryApp
+```
+
+### Install npm packages
+
+Install the `npm` packages described in the `package.json` and verify that it works:
+
+```shell
+npm install 
+```
+or
+```shell
+npm install --legacy-peer-deps 
+```
+`*if you run into a peer dependency error*`
 
 ## Development server
 
